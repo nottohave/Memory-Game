@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // create my deck, link the card to my blank img
     function createDeck() {
         for (let i = 0; i < cardArray.length; i++) {
-            var card = document.createElement('img')
-            card.setAttribute('src', './img/blank.png')
+            var card = document.createElement('img') // create each card with the element img
+            card.setAttribute('src', './img/blank.png') // give each card an img source
             card.setAttribute('data-id', i) // give each card an id
-            card.addEventListener('click', flipCard) // flip the card event
+            card.addEventListener('click', flipCard) // add the flip the card event
             grid.appendChild(card) // place the card into the grid div
         }
     }
@@ -80,20 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionOneId = cardsChosenId[0];
         const optionTwoId = cardsChosenId[1];
         // show white for two cards match with img name, set an alert
-        // otherwise, show  blank, set a different alert
+        // otherwise, show blank, set a different alert
         if (cardsChosen[0] === cardsChosen[1]) {
             alert('You found a match')
+            cards[optionOneId].removeAttribute('data-id');
             cards[optionOneId].setAttribute('src', './img/white.png');
+            cards[optionTwoId].removeAttribute('data-id');
             cards[optionTwoId].setAttribute('src', './img/white.png');
             cardsWon.push(cardsChosen);
         } else {
+            console.log(cards[optionOneId].getAttribute('data-id'));
+            console.log(cards[optionTwoId].getAttribute('data-id'));
             cards[optionOneId].setAttribute('src', './img/blank.png');
             cards[optionTwoId].setAttribute('src', './img/blank.png');
             alert('Sorry, try again')
         }
         cardsChosen = [];
         cardsChosenId = [];
-        resultDisplay.textConet = cardsWon.length;
+        resultDisplay.textContent = cardsWon.length;
         if (cardsWon.length === cardArray.length / 2) {
             resultDisplay.textContent = "congratulation! You found them all!"
         }
@@ -101,7 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //flip your card
     function flipCard() {
-        var cardId = this.getAttribute('data-id')
+        var cardId = this.getAttribute('data-id');
+        if (cardArray[cardId] === undefined) {
+            return "";
+        }
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', cardArray[cardId].img)

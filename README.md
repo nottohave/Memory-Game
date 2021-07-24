@@ -14,3 +14,8 @@ appendChild()
 math.random()
 sort()
 For loops
+
+# Update
+Bug fix: display nothing when user reselect matched cards.
+
+Incoming modification in the future: when all the cards are matched, display all of them at the end along the message congratulation.
