@@ -23,7 +23,6 @@ h3 {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  grid-template-columns: repeat();
   background-color: lightcyan;
   height: 330px;
   width: 440px;
