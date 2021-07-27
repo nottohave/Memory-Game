@@ -32,3 +32,18 @@ img {
   padding: 3px;
   border: 2px solid black;
 }
+
+@media screen and (max-width: 842px) {
+  h3 {
+    font-size: 15px;
+  }
+  .grid {
+    height: 210px;
+    width: 280px;
+  }
+
+  img {
+    height: 70px;
+    width: 70px;
+  }
+}

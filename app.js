@@ -58,29 +58,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     // display the result
     const resultDisplay = document.querySelector('#result');
-
+    
     var cardsChosen = [];
     var cardsChosenId = [];
     var cardsWon = [];
 
-    // create my deck, link the card to my blank img
+    // create my deck, link the card to my blank img, each img will have an id, an event of click to flip
+    // then add each card to the grid (deck)
     function createDeck() {
         for (let i = 0; i < cardArray.length; i++) {
-            var card = document.createElement('img') // create each card with the element img
-            card.setAttribute('src', './img/blank.png') // give each card an img source
-            card.setAttribute('data-id', i) // give each card an id
-            card.addEventListener('click', flipCard) // add the flip the card event
-            grid.appendChild(card) // place the card into the grid div
+            var card = document.createElement('img') 
+            card.setAttribute('src', './img/blank.png') 
+            card.setAttribute('data-id', i) 
+            card.addEventListener('click', flipCard) 
+            grid.appendChild(card) 
         }
     }
 
-    //check for matches when you must have 2 cards in the array
+    // check for matches when 2 cards in the array
     function checkForMatch() {
         var cards = document.querySelectorAll('img');
         const optionOneId = cardsChosenId[0];
         const optionTwoId = cardsChosenId[1];
-        // show white for two cards match with img name, set an alert
-        // otherwise, show blank, set a different alert
+        // show white for two cards match with img name
+        // otherwise, show blank
         if (cardsChosen[0] === cardsChosen[1]) {
             cards[optionOneId].removeAttribute('data-id');
             cards[optionTwoId].removeAttribute('data-id');
@@ -106,12 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardArray[cardId] === undefined) {
             return "";
         }
-        cardsChosen.push(cardArray[cardId].name)
-        cardsChosenId.push(cardId)
-        this.setAttribute('src', cardArray[cardId].img)
+        cardsChosen.push(cardArray[cardId].name);
+        cardsChosenId.push(cardId);
+        this.setAttribute('src', cardArray[cardId].img);
         // only 2 cards in the array, then check the match
         if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 150);
+            setTimeout(checkForMatch, 200);
         }
     }
 
