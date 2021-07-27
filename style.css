@@ -1,6 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 10%;
+  background-color: lightgoldenrodyellow;
+}
+
+h3 {
+  text-align: center;
+}
+
+.first-container {
+  display: flex;
+  justify-content: center;
+}
+
 .grid {
-    display: flex;
-    flex-wrap: wrap;
-    height: 300px;
-    width: 400px;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat();
+  background-color: lightcyan;
+  height: 330px;
+  width: 440px;
+}
+
+img {
+  padding: 3px;
+  border: 2px solid black;
 }
